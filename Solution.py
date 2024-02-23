@@ -20,7 +20,7 @@ class Solution:
         for state in queue[1:]:
             print(state.selected_action)
             self.problem.print_state(state)
-        print(state.selected_action)
+        print(self.state.selected_action)
         self.problem.print_state(self.state)
         print('Solution State\n')
         print('duration = ' + str(self.duration))
