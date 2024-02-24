@@ -11,3 +11,6 @@ class State:
 
     def __hash__(self):
         return self.board.__hash__()
+
+    def __lt__(self, other):
+        return 0
