@@ -2,12 +2,14 @@ import copy
 
 from Action import Action
 from State import State
+from Mode import Mode
 
 
 class Problem:
-    def __init__(self, initState: State, goal_number: int):
+    def __init__(self, initState: State, goal_number: int, mode: Mode):
         self.initState = initState
         self.goal_number = goal_number
+        self.mode = mode
 
     def goal_test(self, state: State) -> bool:  # this method check this state is goal or not
         for i in state.board.gird:
@@ -20,16 +22,16 @@ class Problem:
         child = []
 
         child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: up'))
-        Action.up(child[-1].board)
+        Action.up(child[-1].board, self.mode)
 
         child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: down'))
-        Action.down(child[-1].board)
+        Action.down(child[-1].board, self.mode)
 
         child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: left'))
-        Action.left(child[-1].board)
+        Action.left(child[-1].board, self.mode)
 
         child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: right'))
-        Action.right(child[-1].board)
+        Action.right(child[-1].board, self.mode)
 
         return child
 

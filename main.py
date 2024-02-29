@@ -1,10 +1,11 @@
 from Board import Board
 from Problem import Problem
+from Mode import Mode
 from State import State
 from Search import Search
 
 if __name__ == '__main__':
-    test_path = './tests/1.txt'
+    test_path = './tests/6.txt'
     file = open(test_path, 'r')
     lines = [i.replace('\n', '') for i in file.readlines()]
     goal = int(lines[0])
@@ -12,5 +13,5 @@ if __name__ == '__main__':
     arr = []
     for i in lines[2:]:
         arr.append([int(j) for j in i.split(' ')])
-    s = Search.bfs(Problem(State(Board(row, col, arr), None, 0, ''), goal))
+    s = Search.bfs(Problem(State(Board(row, col, arr), None, 0, ''), goal, Mode.Advance))
     s.print_path()
