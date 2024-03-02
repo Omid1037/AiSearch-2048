@@ -21,16 +21,16 @@ class Problem:
     def successor(self, state: State) -> list:
         child = []
 
-        child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: up'))
+        child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: up' ,self.mode ))
         Action.up(child[-1].board, self.mode)
 
-        child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: down'))
+        child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: down'  ,self.mode ))
         Action.down(child[-1].board, self.mode)
 
-        child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: left'))
+        child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: left' ,self.mode  ))
         Action.left(child[-1].board, self.mode)
 
-        child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: right'))
+        child.append(State(copy.deepcopy(state.board), state, state.g_n + 1, 'Action: right' ,self.mode  ))
         Action.right(child[-1].board, self.mode)
 
         return child
