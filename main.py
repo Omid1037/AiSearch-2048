@@ -13,5 +13,5 @@ if __name__ == '__main__':
     arr = []
     for i in lines[2:]:
         arr.append([int(j) for j in i.split(' ')])
-    s = Search.bfs(Problem(State(Board(row, col, arr), None, 0, ''), goal, Mode.Advance))
+    s = Search.bfs(Problem(State(Board(row, col, arr), None, 0, '',Mode.Advance), goal, Mode.Advance))
     s.print_path()
