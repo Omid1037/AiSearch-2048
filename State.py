@@ -2,7 +2,6 @@
 from Board import Board
 from Mode import Mode
 
-
 class State:
     def __init__(self, board: Board, parent, g_n: int, selected_action: str, mode: Mode):
         self.board = board
@@ -12,7 +11,15 @@ class State:
         self.mode = mode
 
     def __hash__(self):
-        return self.board.__hash__()
+        # Convert the board grid to a string representation
+        grid_str = ''.join(str(cell) for row in self.board.gird for cell in row)
+        # Hash the string representation
+        return hash(grid_str)
+
+    def __eq__(self, other):
+        # Check equality based on the board configuration
+        return self.board.gird == other.board.gird
 
     def __lt__(self, other):
-        return 0
+      # Compare State objects based on their g_n values
+      return self.g_n < other.g_n
